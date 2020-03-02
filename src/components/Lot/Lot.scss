@@ -1,0 +1,31 @@
+.lot {
+  display: flex;
+  justify-content: space-between;
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  &__input {
+    font-size: 1.5rem;
+    width: 25%;
+    &--size {
+      &-sm {
+        width: 15%;
+      }
+      &-lg {
+        width: 45%;
+      }
+    }
+  }
+  &__sign {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__button {
+    font-size: 2rem;
+    width: 32px;
+    height: 32px;
+    line-height: 0;
+  }
+}

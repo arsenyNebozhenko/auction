@@ -1,0 +1,66 @@
+.timer {
+  width: 40%;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+  &__main {
+    background-color: #00796b;
+    padding: 16px;
+    border-top: 3px solid #bdbdbd;
+    border-bottom: 3px solid #bdbdbd;
+  }
+  &__controls {
+    display: flex;
+    justify-content: center;
+  }
+  &__button {
+    font-size: 1.25rem;
+    width: 128px;
+    color: #fff;
+    background-color: #343a40;
+    border: 0;
+    padding: 4px 0;
+    margin: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: lighten(#343a40, 3);
+    }
+    &--success {
+      background-color: #28a745;
+      &:hover {
+        background-color: lighten(#28a745, 3);
+      }
+    }
+    &--danger {
+      background-color: #dc3545;
+      &:hover {
+        background-color: lighten(#dc3545, 3);
+      }
+    }
+  }
+  &__time {
+    text-align: center;
+    font-size: 6rem;
+    color: #fff;
+  }
+  &__minutes {
+  }
+  &__seconds {
+  }
+  &__milliseconds {
+    font-size: 4rem;
+  }
+  &__stats {
+    color: #fff;
+    display: flex;
+  }
+  &__total-time {
+    margin-left: auto;
+    margin-right: 4px;
+  }
+  &__total-sum {
+    margin-left: 4px;
+  }
+}

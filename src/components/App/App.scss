@@ -1,1 +1,13 @@
-
+.app {
+  background-color: #1a8e82;
+  height: 100%;
+  &__container {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 1000px) {
+      align-items: center;
+      flex-direction: column-reverse;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.stats {
+  margin: 4px 0;
+  color: #fff;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+  &__time {
+
+  }
+  &__separator {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  &__money {
+    
+  }
+}
