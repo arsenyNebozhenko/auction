@@ -1,4 +1,4 @@
-import { UPDATE_TIME, UPDATE_MONEY } from "../actions/types"
+import { UPDATE_STATS_TIME, UPDATE_STATS_MONEY } from "../actions/types"
 
 const initialState = {
   time: 0,
@@ -7,12 +7,12 @@ const initialState = {
 
 const stats = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_TIME:
+    case UPDATE_STATS_TIME:
       return {
         ...state,
         time: action.payload.value
       }
-    case UPDATE_MONEY:
+    case UPDATE_STATS_MONEY:
       return {
         ...state,
         money: action.payload.value
