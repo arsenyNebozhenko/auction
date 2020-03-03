@@ -1,7 +1,7 @@
 const initialState = {
   timeLeft: 10 * 60 * 60 * 1000,
   timeSpent: 0,
-  isActive: false
+  isPaused: false
 }
 
 const timer = (state = initialState, action) => {

@@ -1,8 +1,9 @@
 import React from 'react'
 import './Timer.scss'
 import Stats from '../Stats/Stats'
+import { connect } from 'react-redux'
 
-const Timer = () => {
+const Timer = ({ timeLeft, timeSpent, isPaused }) => {
   return (
     <div className="timer">
       <div className="timer__main">
@@ -12,7 +13,7 @@ const Timer = () => {
           <button className="timer__button">=10</button>
         </div>
         <div className="timer__time">
-          <span className="timer__minutes">10</span>
+          <span className="timer__minutes">{timeLeft / 60 / 60 / 1000}</span>
           :
           <span className="timer__seconds">00</span>
           .
@@ -28,4 +29,10 @@ const Timer = () => {
   )
 }
 
-export default Timer
+const mapStateToProps = (state) => ({
+  timeLeft: state.timer.timeLeft,
+  timeSpent: state.timer.timeSpent,
+  isPaused: state.timer.isPaused
+})
+
+export default connect(mapStateToProps)(Timer)
