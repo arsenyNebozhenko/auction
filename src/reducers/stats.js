@@ -8,7 +8,6 @@ const initialState = {
 const stats = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_STATS:
-      console.log(action.payload)
       return {
         ...state,
         [action.payload.name]: action.payload.value
