@@ -5,8 +5,8 @@ class Lot {
   constructor() {
     this.id = uuid()
     this.title = ''
-    this.price = ''
-    this.add = ''
+    this.price = 0
+    this.add = 0
   }
 }
 

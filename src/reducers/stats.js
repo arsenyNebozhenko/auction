@@ -1,4 +1,4 @@
-import { UPDATE_STATS } from "../actions/types"
+import { UPDATE_TIME, UPDATE_MONEY } from "../actions/types"
 
 const initialState = {
   time: 0,
@@ -7,11 +7,15 @@ const initialState = {
 
 const stats = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_STATS:
-      console.log(action.payload)
+    case UPDATE_TIME:
       return {
         ...state,
-        [action.payload.name]: action.payload.value
+        time: action.payload.value
+      }
+    case UPDATE_MONEY:
+      return {
+        ...state,
+        money: action.payload.value
       }
     default:
       return state

@@ -3,9 +3,11 @@ import './Lots.scss'
 import Lot from '../Lot/Lot'
 import { connect } from 'react-redux'
 import { updateItemProp, addLot } from '../../actions/lots'
-import { updateStats } from '../../actions/stats'
+import { updateMoney } from '../../actions/stats'
 
-const Lots = ({ lots, updateItemProp, addLot, updateStats }) => {
+const Lots = ({ lots, updateItemProp, addLot, updateMoney }) => {
+  updateMoney(lots.reduce((acc, cur) => acc + cur.price, 0))
+
   return (
     <div className="lots">
       <ul className="lots__list">
@@ -17,7 +19,6 @@ const Lots = ({ lots, updateItemProp, addLot, updateStats }) => {
             price={lot.price} 
             add={lot.add} 
             updateItemProp={updateItemProp} 
-            updateStats={updateStats}
           />
         )}
       </ul>
@@ -33,7 +34,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateItemProp: (id, name, value, sort) => dispatch(updateItemProp(id, name, value, sort)),
   addLot: () => dispatch(addLot()),
-  updateStats: (name, value) => dispatch(updateStats(name, value)),
+  updateMoney: (value) => dispatch(updateMoney(value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lots)

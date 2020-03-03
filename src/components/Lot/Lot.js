@@ -11,21 +11,19 @@ const Lot = ({ id, title, price, add, updateItemProp, updateStats }) => {
   const addPrice = () => {
     updateItemProp(id, 'price', +price + +add, true)
     updateItemProp(id, 'add', '')
-    updateStats('money', +price + +add)
   }
   
   const handleBlur = () => {
     updateItemProp(id, 'price', +price, true)
-    updateStats('money', +price)
   }
 
   return (
     <li className="lot">
       <input type="text" className="lot__input lot__input--size-lg" value={title} name="title" onChange={handleChange} />
       <div className="lot__sign">-</div>
-      <input type="text" className="lot__input" value={price} name="price" onChange={handleChange} onBlur={handleBlur} />
+      <input type="text" className="lot__input" value={price || ''} name="price" onChange={handleChange} onBlur={handleBlur} />
       <div className="lot__sign">₽</div>
-      <input type="text" className="lot__input lot__input--size-sm" value={add} name="add" onChange={handleChange} />
+      <input type="text" className="lot__input lot__input--size-sm" value={add || ''} name="add" onChange={handleChange} />
       <button className="lot__button" onClick={addPrice}>+</button>
     </li>
   )
