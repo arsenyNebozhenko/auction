@@ -1,18 +1,30 @@
-import { UPDATE_ITEM_PROP } from '../actions/types'
+import { UPDATE_ITEM_PROP, ADD_LOT } from '../actions/types'
 
 const initialState = [
   {
     id: 0,
-    title: 'Title 1',
-    price: 100,
+    title: '',
+    price: '',
     add: ''
   },
   {
     id: 1,
-    title: 'Title 2',
-    price: 50,
+    title: '',
+    price: '',
     add: ''
   },
+  {
+    id: 2,
+    title: '',
+    price: '',
+    add: ''
+  },
+  {
+    id: 3,
+    title: '',
+    price: '',
+    add: ''
+  }
 ]
 
 const lots = (state = initialState, action) => {
@@ -28,6 +40,16 @@ const lots = (state = initialState, action) => {
       }
 
       return newState
+    case ADD_LOT:
+      return [
+        ...state,
+        {
+          id: Math.random(),
+          title: '',
+          price: '',
+          add: ''
+        }
+      ]
     default:
       return state
   }

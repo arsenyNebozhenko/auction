@@ -1,4 +1,4 @@
-import { UPDATE_ITEM_PROP } from "./types";
+import { UPDATE_ITEM_PROP, ADD_LOT } from "./types";
 
 export const updateItemProp = (id, name, value, sort) => ({
   type: UPDATE_ITEM_PROP,
@@ -8,4 +8,8 @@ export const updateItemProp = (id, name, value, sort) => ({
     value,
     sort
   }
+})
+
+export const addLot = () => ({
+  type: ADD_LOT
 })

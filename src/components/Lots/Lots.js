@@ -2,22 +2,25 @@ import React from 'react'
 import './Lots.scss'
 import Lot from '../Lot/Lot'
 import { connect } from 'react-redux'
-import { updateItemProp } from '../../actions/lots'
+import { updateItemProp, addLot } from '../../actions/lots'
 
-const Lots = ({ lots, updateItemProp }) => {
+const Lots = ({ lots, updateItemProp, addLot }) => {
   return (
-    <ul className="lots">
-      {lots.map(lot => 
-        <Lot 
-          key={lot.id} 
-          id={lot.id} 
-          title={lot.title} 
-          price={lot.price} 
-          add={lot.add} 
-          updateItemProp={updateItemProp} 
-        />
-      )}
-    </ul>
+    <div className="lots">
+      <ul className="lots__list">
+        {lots.map(lot => 
+          <Lot 
+            key={lot.id} 
+            id={lot.id} 
+            title={lot.title} 
+            price={lot.price} 
+            add={lot.add} 
+            updateItemProp={updateItemProp} 
+          />
+        )}
+      </ul>
+      <button className="lots__button" onClick={addLot}>+</button>
+    </div>
   )
 }
 
@@ -26,7 +29,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateItemProp: (id, name, value, sort) => dispatch(updateItemProp(id, name, value, sort))
+  updateItemProp: (id, name, value, sort) => dispatch(updateItemProp(id, name, value, sort)),
+  addLot: () => dispatch(addLot())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lots)
