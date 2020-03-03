@@ -1,7 +1,7 @@
 import React from 'react'
 import './Lot.scss'
 
-const Lot = ({ id, title, price, add, updateItemProp }) => {
+const Lot = ({ id, title, price, add, updateItemProp, updateStats }) => {
   const handleChange = ({ target: { name, value }}) => {
     value = name === 'price' || name === 'add' ? +value : value
 
@@ -11,10 +11,12 @@ const Lot = ({ id, title, price, add, updateItemProp }) => {
   const addPrice = () => {
     updateItemProp(id, 'price', +price + +add, true)
     updateItemProp(id, 'add', '')
+    updateStats('money', +price + +add)
   }
-
+  
   const handleBlur = () => {
     updateItemProp(id, 'price', +price, true)
+    updateStats('money', +price)
   }
 
   return (

@@ -18,7 +18,7 @@ const Stats = ({ time, money, updateStats }) => {
     <div className="stats">
       <div className="stats__time">Потрачено: {msToTime(time, 'hms')}</div>
       <div className="stats__separator">|</div>
-      <div className="stats__money">₽ 0</div>
+      <div className="stats__money">₽ {money}</div>
     </div>
   )
 }
