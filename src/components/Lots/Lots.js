@@ -26,7 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateItemProp: (id, name, value) => dispatch(updateItemProp(id, name, value))
+  updateItemProp: (id, name, value, sort) => dispatch(updateItemProp(id, name, value, sort))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lots)
