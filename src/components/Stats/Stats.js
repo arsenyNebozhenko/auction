@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './Stats.scss'
 import { connect } from 'react-redux'
 import { updateStats } from '../../actions/stats'
+import { msToTime } from '../../utils'
 
 const Stats = ({ time, money, updateStats }) => {
   useEffect(() => {
@@ -15,7 +16,7 @@ const Stats = ({ time, money, updateStats }) => {
 
   return (
     <div className="stats">
-      <div className="stats__time">Потрачено: {time / 1000} секунд</div>
+      <div className="stats__time">Потрачено: {msToTime(time, 'hms')}</div>
       <div className="stats__separator">|</div>
       <div className="stats__money">₽ 0</div>
     </div>
