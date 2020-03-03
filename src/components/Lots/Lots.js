@@ -1,14 +1,23 @@
 import React from 'react'
 import './Lots.scss'
 import Lot from '../Lot/Lot'
+import { connect } from 'react-redux'
+import { updateItemProp } from '../../actions/lots'
 
-const Lots = () => {
+const Lots = ({ lots, updateItemProp }) => {
   return (
     <ul className="lots">
-      <Lot />
-      <Lot />
+      {lots.map(lot => <Lot key={lot.id} id={lot.id} title={lot.title} price={lot.price} add={lot.add} updateItemProp={updateItemProp} />)}
     </ul>
   )
 }
 
-export default Lots
+const mapStateToProps = (state) => ({
+  lots: state.lots
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  updateItemProp: (id, name, value) => dispatch(updateItemProp(id, name, value))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Lots)
