@@ -1,30 +1,20 @@
 import { UPDATE_ITEM_PROP, ADD_LOT } from '../actions/types'
+import { v4 as uuid } from 'uuid'
+
+class Lot {
+  constructor() {
+    this.id = uuid()
+    this.title = ''
+    this.price = ''
+    this.add = ''
+  }
+}
 
 const initialState = [
-  {
-    id: 0,
-    title: '',
-    price: '',
-    add: ''
-  },
-  {
-    id: 1,
-    title: '',
-    price: '',
-    add: ''
-  },
-  {
-    id: 2,
-    title: '',
-    price: '',
-    add: ''
-  },
-  {
-    id: 3,
-    title: '',
-    price: '',
-    add: ''
-  }
+  new Lot(),
+  new Lot(),
+  new Lot(),
+  new Lot()
 ]
 
 const lots = (state = initialState, action) => {
@@ -43,12 +33,7 @@ const lots = (state = initialState, action) => {
     case ADD_LOT:
       return [
         ...state,
-        {
-          id: Math.random(),
-          title: '',
-          price: '',
-          add: ''
-        }
+        new Lot()
       ]
     default:
       return state
