@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react'
 import './Stats.scss'
 import { connect } from 'react-redux'
-import { updateTime } from '../../actions/stats'
+import { updateStatsTime } from '../../actions/stats'
 import { msToTime } from '../../utils'
 
-const Stats = ({ time, money, updateTime }) => {
+const Stats = ({ time, money, updateStatsTime }) => {
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      updateTime(time + 1000)
+    setTimeout(() => {
+      updateStatsTime(time + 1000)
     }, 1000)
-    return () => {
-      clearInterval(intervalId)
-    }
-  }, [time, updateTime])
+  }, [time, updateStatsTime])
 
   return (
     <div className="stats">
@@ -29,7 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateTime: (value) => dispatch(updateTime(value))
+  updateStatsTime: (value) => dispatch(updateStatsTime(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Stats)

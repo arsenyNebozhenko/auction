@@ -1,6 +1,6 @@
 import { UPDATE_STATS_TIME, UPDATE_STATS_MONEY } from "./types";
 
-export const updateTime = (value) => ({
+export const updateStatsTime = (value) => ({
   type: UPDATE_STATS_TIME,
   payload: {
     value

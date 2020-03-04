@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Timer.scss'
 import Stats from '../Stats/Stats'
 import { connect } from 'react-redux'
+import { updateTimer, togglePauseTimer } from '../../actions/timer'
+import { msToTime } from '../../utils'
 
-const Timer = ({ timeLeft, timeSpent, isPaused }) => {
+const Timer = ({ timeLeft, isPaused, updateTimer, togglePauseTimer }) => {
+  useEffect(() => {
+    if (isPaused) return
+    setTimeout(() => {
+      updateTimer(timeLeft - 63)
+    }, 63)
+  }, [isPaused, timeLeft, updateTimer])
+
   return (
     <div className="timer">
       <div className="timer__main">
         <div className="timer__controls">
-          <button className="timer__button">+1</button>
-          <button className="timer__button">+2</button>
-          <button className="timer__button">=10</button>
+          <button className="timer__button" onClick={() => updateTimer(timeLeft + 1000 * 60)}>+1</button>
+          <button className="timer__button" onClick={() => updateTimer(timeLeft + 1000 * 60 * 2)}>+2</button>
+          <button className="timer__button" onClick={() => updateTimer(600000)}>=10</button>
         </div>
         <div className="timer__time">
-          <span className="timer__minutes">{timeLeft / 60 / 60 / 1000}</span>
-          :
-          <span className="timer__seconds">00</span>
-          .
-          <span className="timer__milliseconds">000</span>
+          {msToTime(timeLeft, 'msm')}
         </div>
         <div className="timer__controls">
-          <button className="timer__button timer__button--success">Start</button>
-          <button className="timer__button timer__button--danger">Reset</button>
+          <button className="timer__button timer__button--success" onClick={togglePauseTimer}>{isPaused ? 'Start' : 'Pause'}</button>
+          <button className="timer__button timer__button--danger" onClick={() => updateTimer(0)}>Reset</button>
         </div>
       </div>
       <Stats />
@@ -31,8 +36,12 @@ const Timer = ({ timeLeft, timeSpent, isPaused }) => {
 
 const mapStateToProps = (state) => ({
   timeLeft: state.timer.timeLeft,
-  timeSpent: state.timer.timeSpent,
   isPaused: state.timer.isPaused
 })
 
-export default connect(mapStateToProps)(Timer)
+const mapDispatchToProps = (dispatch) => ({
+  updateTimer: (value) => dispatch(updateTimer(value)),
+  togglePauseTimer: () => dispatch(togglePauseTimer())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timer)
