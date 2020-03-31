@@ -1,4 +1,4 @@
-import { UPDATE_TIMER, TOGGLE_PAUSE_TIMER } from "../actions/types"
+import { UPDATE_TIMER_PROP } from "../actions/types"
 
 const initialState = {
   timeLeft: 600000,
@@ -7,15 +7,10 @@ const initialState = {
 
 const timer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_TIMER:
+    case UPDATE_TIMER_PROP:
       return {
         ...state,
-        timeLeft: action.payload.value
-      }
-    case TOGGLE_PAUSE_TIMER:
-      return {
-        ...state,
-        isPaused: !state.isPaused
+        [action.payload.key]: action.payload.value
       }
     default:
       return state

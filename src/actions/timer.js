@@ -1,12 +1,9 @@
-import { UPDATE_TIMER, TOGGLE_PAUSE_TIMER } from "./types"
+import { UPDATE_TIMER_PROP } from "./types"
 
-export const updateTimer = (value) => ({
-  type: UPDATE_TIMER,
+export const updateTimerProp = (key, value) => ({
+  type: UPDATE_TIMER_PROP,
   payload: {
+    key,
     value
   }
-})
-
-export const togglePauseTimer = () => ({
-  type: TOGGLE_PAUSE_TIMER
 })
